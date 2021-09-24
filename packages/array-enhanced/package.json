@@ -10,7 +10,7 @@
         "test": "karma start karma.conf.js"
     },
     "author": "Zdeněk Mazurák",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {},
     "devDependencies": {
         "@types/jasmine": "^3.5.0",

@@ -2,6 +2,8 @@
 
 declare global {
     interface Array<T> {
+        readonly first: T|undefined;
+        readonly last: T|undefined;
         readonly isEmpty: boolean;
         readonly isNotEmpty: boolean;
         clear(): void;
@@ -43,15 +45,13 @@ Object.defineProperty(Array.prototype, "clear", {
 
 Object.defineProperty(Array.prototype, "remove", {
     value: function (...items: any[]) {
-        if (items.isEmpty) {
-            return this;
-        }
-        const index = this.indexOf(items.shift());
+        for (const item of items) {
+            const index = this.indexOf(item);
 
-        if (index > -1) {
-            this.splice(index, 1);
+            if (index > -1) {
+                this.splice(index, 1);
+            }
         }
-        this.remove(...items);
 
         return this;
     }

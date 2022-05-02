@@ -6,8 +6,8 @@ declare global {
         readonly last: T|undefined;
         readonly isEmpty: boolean;
         readonly isNotEmpty: boolean;
-        clear(): void;
-        remove(...items: T[]): Array<T>;
+        deleteAll(): T[];
+        delete(...items: T[]): T[];
         toSet(): Set<T>;
     }
 }
@@ -37,13 +37,14 @@ Object.defineProperty(Array.prototype, "last", {
     }
 });
 
-Object.defineProperty(Array.prototype, "clear", {
+Object.defineProperty(Array.prototype, "deleteAll", {
     value: function () {
         this.length = 0;
+        return this;
     }
 });
 
-Object.defineProperty(Array.prototype, "remove", {
+Object.defineProperty(Array.prototype, "delete", {
     value: function (...items: any[]) {
         for (const item of items) {
             const index = this.indexOf(item);

@@ -12,8 +12,8 @@
     "author": "Zdeněk Mazurák",
     "license": "MIT",
     "dependencies": {
-        "array-enhanced": "^1.0.0",
-        "mobx": "5.0.0"
+        "array-enhanced": "^1.0.1",
+        "mobx": "^5.0.0"
     },
     "devDependencies": {
         "@types/jasmine": "^3.5.0",

@@ -7,7 +7,9 @@
     "scripts": {
         "build": "tsc",
         "debug": "tsc --watch",
-        "test": "karma start karma.conf.js"
+        "test": "karma start karma.conf.js",
+        "test:no-watch": "karma start karma.conf.js --auto-watch=false --single-run=true",
+        "release": "publish-if-not-exists"
     },
     "author": "Zdeněk Mazurák",
     "license": "MIT",

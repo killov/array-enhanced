@@ -12,7 +12,7 @@
     "author": "Zdeněk Mazurák",
     "license": "MIT",
     "dependencies": {
-        "array-enhanced": "^1.0.1",
+        "array-enhanced": "1.0.2",
         "mobx": "^5.0.0"
     },
     "devDependencies": {

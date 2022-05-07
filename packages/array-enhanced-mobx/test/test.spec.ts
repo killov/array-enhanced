@@ -52,7 +52,7 @@ describe("tests", () => {
         expect(a.last).toBe(undefined);
     })
 
-    fit("mobx", () => {
+    it("mobx", () => {
         const a = observable([]);
         const spyEmptyCount = jasmine.createSpy();
         const spyNotEmptyCount = jasmine.createSpy();
@@ -68,13 +68,11 @@ describe("tests", () => {
             spyNotEmptyCount();
         });
         autorun(() => {
-            //a.length;
             a.first;
             spyFirst();
         });
         autorun(() => {
             a.last;
-           // a.length;
             spyLast();
         });
 
@@ -84,23 +82,23 @@ describe("tests", () => {
         expect(spyLast).toHaveBeenCalledTimes(1);
 
         a.push(1);
-        expect(spyEmptyCount).toHaveBeenCalledTimes(1);
-        expect(spyNotEmptyCount).toHaveBeenCalledTimes(1);
-        //a[0] = 1;
-       // expect(spyFirst).toHaveBeenCalledTimes(2);
-        //expect(spyLast).toHaveBeenCalledTimes(2);
+        expect(spyEmptyCount).toHaveBeenCalledTimes(2);
+        expect(spyNotEmptyCount).toHaveBeenCalledTimes(2);
+        a[0] = 1;
+        expect(spyFirst).toHaveBeenCalledTimes(1);
+        expect(spyLast).toHaveBeenCalledTimes(2);
 
         a.push(2);
-        expect(spyEmptyCount).toHaveBeenCalledTimes(1);
-        expect(spyNotEmptyCount).toHaveBeenCalledTimes(1);
+        expect(spyEmptyCount).toHaveBeenCalledTimes(2);
+        expect(spyNotEmptyCount).toHaveBeenCalledTimes(2);
 
-        a.clear();
-        expect(spyEmptyCount).toHaveBeenCalledTimes(1);
-        expect(spyNotEmptyCount).toHaveBeenCalledTimes(1);
+        a.deleteAll();
+        expect(spyEmptyCount).toHaveBeenCalledTimes(3);
+        expect(spyNotEmptyCount).toHaveBeenCalledTimes(3);
 
         a.push(2);
-        expect(spyEmptyCount).toHaveBeenCalledTimes(1);
-        expect(spyNotEmptyCount).toHaveBeenCalledTimes(1);
+        expect(spyEmptyCount).toHaveBeenCalledTimes(4);
+        expect(spyNotEmptyCount).toHaveBeenCalledTimes(4);
     });
 });
 

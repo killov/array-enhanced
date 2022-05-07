@@ -13,6 +13,7 @@ declare global {
 }
 
 Object.defineProperty(Array.prototype, "isEmpty", {
+    configurable: true,
     get: function () {
         [].length
         return this.length === 0;
@@ -20,24 +21,28 @@ Object.defineProperty(Array.prototype, "isEmpty", {
 });
 
 Object.defineProperty(Array.prototype, "isNotEmpty", {
+    configurable: true,
     get: function () {
         return !this.isEmpty;
     }
 });
 
 Object.defineProperty(Array.prototype, "first", {
+    configurable: true,
     get: function () {
         return this[0];
     }
 });
 
 Object.defineProperty(Array.prototype, "last", {
+    configurable: true,
     get: function () {
         return this[this.length - 1];
     }
 });
 
 Object.defineProperty(Array.prototype, "deleteAll", {
+    configurable: true,
     value: function () {
         this.length = 0;
         return this;
@@ -45,6 +50,7 @@ Object.defineProperty(Array.prototype, "deleteAll", {
 });
 
 Object.defineProperty(Array.prototype, "delete", {
+    configurable: true,
     value: function (...items: any[]) {
         for (const item of items) {
             const index = this.indexOf(item);

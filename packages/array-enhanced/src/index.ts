@@ -8,7 +8,6 @@ declare global {
         readonly isNotEmpty: boolean;
         deleteAll(): T[];
         delete(...items: T[]): T[];
-        toSet(): Set<T>;
     }
 }
 
@@ -30,6 +29,9 @@ Object.defineProperty(Array.prototype, "isNotEmpty", {
 Object.defineProperty(Array.prototype, "first", {
     configurable: true,
     get: function () {
+        if (this.isEmpty) {
+            return undefined;
+        }
         return this[0];
     }
 });
@@ -37,6 +39,9 @@ Object.defineProperty(Array.prototype, "first", {
 Object.defineProperty(Array.prototype, "last", {
     configurable: true,
     get: function () {
+        if (this.isEmpty) {
+            return undefined;
+        }
         return this[this.length - 1];
     }
 });

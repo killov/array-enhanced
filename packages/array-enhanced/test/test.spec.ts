@@ -17,6 +17,16 @@ describe("tests", () => {
         expect(a.isNotEmpty).toBe(false);
     })
 
+    it("check isEmpty for first, last", () => {
+        const a = [1, 2];
+        const isEmptySpy = spyOnProperty(a, "isEmpty", "get");
+        expect(isEmptySpy).toHaveBeenCalledTimes(0);
+        expect(a.first).toBe(1);
+        expect(isEmptySpy).toHaveBeenCalledTimes(1);
+        expect(a.last).toBe(2);
+        expect(isEmptySpy).toHaveBeenCalledTimes(2);
+    })
+
     it("remove", () => {
         const a = [1, 2, 3, 4, 5, 1];
 

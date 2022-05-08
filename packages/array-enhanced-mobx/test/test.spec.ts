@@ -84,21 +84,32 @@ describe("tests", () => {
         a.push(1);
         expect(spyEmptyCount).toHaveBeenCalledTimes(2);
         expect(spyNotEmptyCount).toHaveBeenCalledTimes(2);
-        a[0] = 1;
-        expect(spyFirst).toHaveBeenCalledTimes(1);
+        expect(spyFirst).toHaveBeenCalledTimes(2);
         expect(spyLast).toHaveBeenCalledTimes(2);
+        a[0] = 1;
+        expect(spyFirst).toHaveBeenCalledTimes(2);
+        expect(spyLast).toHaveBeenCalledTimes(2);
+        a[0] = 4;
+        expect(spyFirst).toHaveBeenCalledTimes(3);
+        expect(spyLast).toHaveBeenCalledTimes(3);
 
         a.push(2);
         expect(spyEmptyCount).toHaveBeenCalledTimes(2);
         expect(spyNotEmptyCount).toHaveBeenCalledTimes(2);
+        expect(spyFirst).toHaveBeenCalledTimes(3);
+        expect(spyLast).toHaveBeenCalledTimes(4);
 
         a.deleteAll();
         expect(spyEmptyCount).toHaveBeenCalledTimes(3);
         expect(spyNotEmptyCount).toHaveBeenCalledTimes(3);
+        expect(spyFirst).toHaveBeenCalledTimes(4);
+        expect(spyLast).toHaveBeenCalledTimes(5);
 
         a.push(2);
         expect(spyEmptyCount).toHaveBeenCalledTimes(4);
         expect(spyNotEmptyCount).toHaveBeenCalledTimes(4);
+        expect(spyFirst).toHaveBeenCalledTimes(5);
+        expect(spyLast).toHaveBeenCalledTimes(6);
     });
 });
 

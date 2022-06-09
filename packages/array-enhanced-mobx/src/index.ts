@@ -9,7 +9,7 @@ function defineMobxProperty(propertyName: string) {
         get: function () {
             if (isObservableArray(this)) {
                 const adm = Object.getOwnPropertyDescriptor(this, $mobx).value;
-                const proxy = adm.proxy;
+                const proxy = adm.proxy ?? adm.proxy_;
                 return (this[symbol] = this[symbol] ?? computed(() => oldPropertyGet.call(proxy))).get()
             }
             return oldPropertyGet.call(this);
@@ -24,7 +24,7 @@ function defineMobxAction(propertyName: string) {
         value: action(function (...args: any) {
             if (isObservableArray(this)) {
                 const adm = Object.getOwnPropertyDescriptor(this, $mobx).value;
-                const proxy = adm.proxy;
+                const proxy = adm.proxy ?? adm.proxy_;
 
                 return oldPropertyGet.call(proxy, ...args);
             }

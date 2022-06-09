@@ -14,6 +14,7 @@ jobs:
     strategy:
       matrix:
         package: [array-enhanced, array-enhanced-mobx]
+        mobx: [mobx@5.*.*, mobx@6.*.*]
         node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     defaults:
@@ -28,6 +29,7 @@ jobs:
         cache: 'npm'
         cache-dependency-path: packages/${{ matrix.package }}/package-lock.json
     - run: npm ci
+    - run: npm i ${{ matrix.mobx }}
     - run: npm run build
     - run: npm run test:no-watch
     - name: Setum npm credentiels

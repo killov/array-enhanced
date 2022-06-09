@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         package: [array-enhanced, array-enhanced-mobx]
-        mobx: [mobx@5, mobx@6S]
+        mobx: [mobx@5, mobx@6]
         node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     defaults:

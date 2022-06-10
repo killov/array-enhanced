@@ -9,7 +9,7 @@ module.exports = function (config) {
             "*/*.ts": ["karma-typescript"]
         },
         reporters: ["progress", "karma-typescript"],
-        browsers: ["ChromeHeadless"],
+        browsers: ["Chrome"],
         karmaTypescriptConfig: {
             compilerOptions: {
                 emitDecoratorMetadata: true,
